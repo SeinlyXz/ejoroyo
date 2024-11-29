@@ -13,8 +13,10 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-node": "^5.2.9",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/eventsource": "^1.1.15",
 		"autoprefixer": "^10.4.20",
 		"bits-ui": "^1.0.0-next.64",
 		"clsx": "^2.1.1",
@@ -38,6 +40,8 @@
 		"vite": "^5.0.3"
 	},
 	"dependencies": {
-		"pocketbase": "^0.22.0"
+		"eventsource": "^2.0.2",
+		"pocketbase": "^0.22.0",
+		"web-streams-polyfill": "^4.0.0"
 	}
 }

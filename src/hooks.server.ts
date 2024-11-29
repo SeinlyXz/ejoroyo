@@ -3,7 +3,6 @@ import type { Handle } from '@sveltejs/kit'
 
 export const handle: Handle = async ({ event, resolve }) => {
   const pb = createInstance()
-
   // load the store data from the request cookie string
   pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '')
   try {

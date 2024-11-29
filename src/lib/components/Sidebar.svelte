@@ -51,7 +51,7 @@
 	</Sidebar.Content>
 	<Sidebar.Footer>
 		<p class="px-5 py-2">
-			All rights reserved © 2023
+			All rights reserved © 2024
 		</p>
 	</Sidebar.Footer>
 </Sidebar.Root>
