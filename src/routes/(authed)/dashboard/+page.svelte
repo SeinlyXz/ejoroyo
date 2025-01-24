@@ -1,9 +1,30 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import Seo from '$lib/components/Seo.svelte';
+	import { pb } from '$lib/pocketbase';
+	import { onDestroy, onMount } from 'svelte';
 	const alphabet = 'ABCDEFGHIJ';
 	const numbers = '123';
-	let { data } = $props();
+	
+	interface Plant {
+		collectionId: string,
+		collectionName:string,
+		created: Date,
+		healthiness: number,
+		id: string,
+		probability_of_sickness: number,
+		symptoms: string,
+		updated: Date
+	}
+
+	interface Data {
+		items: Plant[]
+	}
+
+	let datas: Data = $state({
+		items: []
+	}); 
+
 	let loading = $state(false)
 
 	interface StatsOverview {
@@ -15,7 +36,7 @@
 	let stats_overview: StatsOverview[] = $state([])
 
 	async function getData() {
-		let req = await data?.plants
+		let req = datas?.items
 		stats_overview.push({
 			type: "Healthy",
 			count: req.filter(data => data.healthiness >= 80).length,
@@ -37,9 +58,50 @@
 			variant: 'bg-gray-100 hover:bg-gray-200'
 		})
 	}
-	$effect(() => {
+
+	let unsubscribePromise: Promise<() => void>;
+
+	onMount(async () => {
+		try {
+			const response = await pb.collection('Plants').getList(); // Fetch data
+			datas = {
+				items: response.items.map((item) => ({
+					collectionId: item.collectionId,
+					collectionName: item.collectionName,
+					created: new Date(item.created),
+					healthiness: item.healthiness,
+					id: item.id,
+					probability_of_sickness: item.probability_of_sickness,
+					symptoms: item.symptoms,
+					updated: new Date(item.updated),
+				}))
+			};
+		} catch (error) {
+			console.error('Auto cancel:', error);
+		}
 		getData()
-	})
+		// Buat promise untuk unsubscribe
+		unsubscribePromise = new Promise((resolve) => {
+			const unsubscribe = pb.collection('Plants').subscribe('*', function (e) {
+				if (e.action === 'create') {
+					//@ts-ignore
+					datas = [...datas, e.record];
+				} else if (e.action === 'delete') {
+					//@ts-ignore
+					datas = datas.filter((test) => test.id !== e.record.id);
+				}
+			});
+
+			// Resolve promise dengan fungsi unsubscribe
+			resolve(unsubscribe);
+		});
+	});
+	onDestroy(async () => {
+		if (unsubscribePromise) {
+			const unsubscribe = await unsubscribePromise;
+			unsubscribe();
+		}
+	});
 </script>
 
 <Seo title="Dashboard" />
@@ -60,7 +122,7 @@
 			{/each}
 		</section>
 		<section class="bg-gray-100 shadow-xl p-4 grid lg:grid-cols-10 md:grid-cols-7 grid-cols-4 gap-4 rounded-xl w-full">
-			{#await data?.plants}
+			{#await datas?.items}
 				{#each Array(30) as _}
 					<div class="skeleton aspect-square"></div>
 				{/each}

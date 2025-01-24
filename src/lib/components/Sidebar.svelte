@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Message from 'lucide-svelte/icons/message-circle';
 	import House from 'lucide-svelte/icons/house';
-	import User from 'lucide-svelte/icons/user';
 	import Logout from 'lucide-svelte/icons/log-out'
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import { page } from '$app/stores';
@@ -11,11 +10,6 @@
 			title: 'Dashboard',
 			url: '/dashboard',
 			icon: House
-		},
-		{
-			title: 'Profile',
-			url: '/profile',
-			icon: User
 		},
 		{
 			title: 'Websocket Testing',

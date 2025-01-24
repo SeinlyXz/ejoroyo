@@ -1,13 +1,3 @@
-import { preprocessImage, processPredictions } from '$lib/helpers/predict-preprocess';
-import * as tf from '@tensorflow/tfjs-node';
-import path from 'path';
-
-export const load = async ({ locals }) => {
-    return {
-        plants: locals.pb.collection('Plants').getFullList({})
-    }
-};
-
 export const actions = {
 	default: async (event) => {
 		const datas = [

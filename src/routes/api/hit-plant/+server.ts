@@ -11,9 +11,10 @@ export const POST = async(event) => {
 
         // Get the uploaded file
         const formData = await event.request.formData();
-        const imageFile = formData.get('gambar');
-        const plantId = formData.get('plantId');
-        console.log(imageFile, plantId)
+        const file = formData.getAll('gambar'); 
+        const metadata = file[0]
+        const imageFile = file[1]
+
         if (imageFile instanceof File) {
             // Convert the uploaded file to a tensor
             const imageBuffer = Buffer.from(await imageFile.arrayBuffer());

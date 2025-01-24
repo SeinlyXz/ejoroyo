@@ -5,7 +5,8 @@
     import AppSidebar from '$lib/components/Sidebar.svelte';
     import Navbar from '$lib/components/Navbar.svelte';
 
-    let { children } = $props();
+    let { children } = $props()
+
     let open = $state(false)
 </script>
 

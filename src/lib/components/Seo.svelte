@@ -1,17 +1,34 @@
 <!-- SEO.svelte -->
 <script lang="ts">
-	export let title: string = 'E-Joroyo';
-	export let description: string = 'Default website description';
-	export let keywords: string = 'keyword1, keyword2';
-	export let author: string = 'Your Name';
-	export let ogTitle: string = title;
-	export let ogDescription: string = description;
-	export let ogImage: string = '/default-og-image.jpg';
-	export let twitterCard: string = 'summary_large_image';
-	export let twitterTitle: string = title;
-	export let twitterDescription: string = description;
-	export let twitterImage: string = ogImage;
-	export let canonicalUrl: string = '';
+	interface Props {
+		title?: string;
+		description?: string;
+		keywords?: string;
+		author?: string;
+		ogTitle?: string;
+		ogDescription?: string;
+		ogImage?: string;
+		twitterCard?: string;
+		twitterTitle?: string;
+		twitterDescription?: string;
+		twitterImage?: string;
+		canonicalUrl?: string;
+	}
+
+	let {
+		title = 'E-Joroyo',
+		description = 'Default website description',
+		keywords = 'keyword1, keyword2',
+		author = 'Your Name',
+		ogTitle = title,
+		ogDescription = description,
+		ogImage = '/default-og-image.jpg',
+		twitterCard = 'summary_large_image',
+		twitterTitle = title,
+		twitterDescription = description,
+		twitterImage = ogImage,
+		canonicalUrl = ''
+	}: Props = $props();
 </script>
 
 <svelte:head>

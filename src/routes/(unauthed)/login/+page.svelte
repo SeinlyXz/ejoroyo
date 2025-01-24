@@ -5,9 +5,9 @@
 	import { applyAction, enhance } from '$app/forms';
 	import { pb } from '$lib/pocketbase';
   
-	let rememberMe = false;
-	let isLoading = false;
-	let isVisible = false;
+	let rememberMe = $state(false);
+	let isLoading = $state(false);
+	let isVisible = $state(false);
   
 	onMount(() => {
 	  isVisible = true;

@@ -14,7 +14,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-node": "^5.2.9",
-		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/kit": "^2.5.27",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/eventsource": "^1.1.15",
 		"@types/nprogress": "^0.2.3",
@@ -24,27 +24,35 @@
 		"daisyui": "^4.12.14",
 		"eslint": "^9.7.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.36.0",
+		"eslint-plugin-svelte": "^2.45.1",
 		"globals": "^15.0.0",
 		"lucide-svelte": "^0.460.1",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
-		"svelte": "^5.0.0",
+		"svelte": "^5.19.1",
 		"svelte-check": "^4.0.0",
 		"tailwind-merge": "^2.5.5",
 		"tailwind-variants": "^0.3.0",
 		"tailwindcss": "^3.4.9",
 		"tailwindcss-animate": "^1.0.7",
-		"typescript": "^5.0.0",
+		"typescript": "^5.5.0",
 		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.3"
+		"vite": "^5.4.4"
 	},
 	"dependencies": {
+		"@pqina/filepond-plugin-image-editor": "9.x",
+		"@pqina/pintura": "^8.x",
+		"@pqina/svelte-pintura": "9.x",
 		"@tensorflow/tfjs-node": "^4.22.0",
 		"eventsource": "^2.0.2",
+		"filepond": "^4.32.7",
+		"filepond-plugin-file-poster": "^2.5.1",
+		"filepond-plugin-image-exif-orientation": "^1.0.11",
+		"filepond-plugin-image-preview": "^4.6.12",
 		"nprogress": "^0.2.0",
 		"pocketbase": "^0.22.0",
+		"svelte-filepond": "^0.2.2",
 		"web-streams-polyfill": "^4.0.0"
 	}
 }
