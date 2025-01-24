@@ -15,7 +15,7 @@
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-node": "^5.2.9",
 		"@sveltejs/kit": "^2.5.27",
-		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/eventsource": "^1.1.15",
 		"@types/nprogress": "^0.2.3",
 		"autoprefixer": "^10.4.20",
